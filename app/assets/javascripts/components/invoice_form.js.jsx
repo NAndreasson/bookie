@@ -1,7 +1,11 @@
 var InvoiceForm = React.createClass({
 
   getInitialState: function() {
-    return { rows: [] };
+    return {
+      rows: [
+      { desc: '', price: 0, units: 0 }
+      ]
+    };
   },
 
   newRow: function() {
@@ -45,9 +49,18 @@ var InvoiceForm = React.createClass({
         <input type="date" ref="last_pay_date" />
 
         <input type="button" value="New row" onClick={ this.newRow } />
-        <ul>
-          {invoiceRows}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Units</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {invoiceRows}
+          </tbody>
+        </table>
 
         <button type="submit">Submit</button>
       </form>
