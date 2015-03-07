@@ -44,8 +44,9 @@ var InvoiceForm = React.createClass({
 
     return (
       <form className="invoice" onSubmit={ this.handleSubmit }>
+
         <input type="text" placeholder="Customer" ref="customer" />
-        <input type="date" ref="invoice_date" />
+        <label>Last pay date</label>
         <input type="date" ref="last_pay_date" />
 
         <input type="button" value="New row" onClick={ this.newRow } />

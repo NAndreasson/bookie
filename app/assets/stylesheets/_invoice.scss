@@ -1,4 +1,10 @@
 form.invoice {
   @include outer-container;
   @include span-columns(8);
+
+  .left, .right {
+    @include span-columns(4);
+  }
+
+
 }
