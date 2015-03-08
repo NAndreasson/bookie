@@ -29,7 +29,6 @@ var InvoiceForm = React.createClass({
       console.log('Response', arguments);
     });
 
-    console.log('Handle submit');
   },
 
   sendFormToServer: function() {
@@ -38,8 +37,8 @@ var InvoiceForm = React.createClass({
 
   render: function() {
 
-    var invoiceRows = this.state.rows.map(function(invoiceRow) {
-      return <NewInvoiceRow row={invoiceRow} />;
+    var invoiceRows = this.state.rows.map(function(invoiceRow, index) {
+      return <NewInvoiceRow key={index} row={invoiceRow} />;
     });
 
     return (

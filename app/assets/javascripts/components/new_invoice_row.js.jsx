@@ -4,8 +4,8 @@ var NewInvoiceRow = React.createClass({
     return (
       <tr>
         <td><input type="text" placeholder="Description" value={this.props.desc}/></td>
-        <td><input type="number" value={this.props.units} /></td>
-        <td><input type="number" value={this.props.price} /></td>
+        <td><input type="number" value={this.props.row.units} /></td>
+        <td><input type="number" value={this.props.row.price} /></td>
       </tr>
     );
   }
