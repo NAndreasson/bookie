@@ -43,7 +43,7 @@ var InvoiceForm = React.createClass({
     });
 
     return (
-      <form className="invoice" onSubmit={ this.handleSubmit }>
+      <form onSubmit={ this.handleSubmit }>
 
         <input type="text" placeholder="Customer" ref="customer" />
         <label>Last pay date</label>

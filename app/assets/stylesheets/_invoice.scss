@@ -1,10 +1,17 @@
-form.invoice {
+.invoice {
   @include outer-container;
   @include span-columns(8);
+  @include shift(2);
 
-  .left, .right {
-    @include span-columns(4);
+  .form {
+    @include fill-parent();
+
+    .left, .right {
+      @include span-columns(4);
+    }
+
   }
+
 
 
 }
