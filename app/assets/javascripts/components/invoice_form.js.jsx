@@ -44,23 +44,34 @@ var InvoiceForm = React.createClass({
     return (
       <form onSubmit={ this.handleSubmit }>
 
-        <input type="text" placeholder="Customer" ref="customer" />
-        <label>Last pay date</label>
-        <input type="date" ref="last_pay_date" />
+        <div className="test">
+        
+          <div className="customer">
+            <label>Customer</label>
+            <input type="text" placeholder="Customer" ref="customer" />
+          </div>
+          <div className="meck">
+            <label>Last pay date</label>
+            <input type="date" ref="last_pay_date" />
+          </div>
 
-        <input type="button" value="New row" onClick={ this.newRow } />
-        <table>
-          <thead>
-            <tr>
-              <th>Description</th>
-              <th>Units</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {invoiceRows}
-          </tbody>
-        </table>
+      </div>
+
+        <div className="rows">
+          <input type="button" value="New row" onClick={ this.newRow } />
+          <table>
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Units</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {invoiceRows}
+            </tbody>
+          </table>
+        </div>
 
         <button type="submit">Submit</button>
       </form>

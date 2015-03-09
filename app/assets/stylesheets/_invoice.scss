@@ -3,15 +3,17 @@
   @include span-columns(8);
   @include shift(2);
 
-  .form {
+  .test {
     @include fill-parent();
-
-    .left, .right {
-      @include span-columns(4);
-    }
-
   }
 
 
+  .customer, .meck {
+    @include span-columns(4 of 8);
+  }
+
+  .rows {
+    @include fill-parent();
+  }
 
 }
