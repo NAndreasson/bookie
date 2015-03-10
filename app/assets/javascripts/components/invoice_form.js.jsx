@@ -21,8 +21,8 @@ var InvoiceForm = React.createClass({
 
     var invoice = {
       customer: this.refs.customer.getDOMNode().value.trim(),
-      invoice_date: this.refs.invoice_date.getDOMNode().value.trim(),
       last_pay_date: this.refs.last_pay_date.getDOMNode().value.trim(),
+      invoice_rows: this.state.rows
     };
 
     $.post('/invoices.json', { invoice: invoice }, function() {
@@ -31,21 +31,13 @@ var InvoiceForm = React.createClass({
 
   },
 
-  sendFormToServer: function() {
-    // ajax to server
-  },
-
   render: function() {
-
-    var invoiceRows = this.state.rows.map(function(invoiceRow, index) {
-      return <NewInvoiceRow key={index} row={invoiceRow} />;
-    });
 
     return (
       <form onSubmit={ this.handleSubmit }>
 
         <div className="test">
-        
+
           <div className="customer">
             <label>Customer</label>
             <input type="text" placeholder="Customer" ref="customer" />
@@ -57,23 +49,12 @@ var InvoiceForm = React.createClass({
 
       </div>
 
-        <div className="rows">
-          <input type="button" value="New row" onClick={ this.newRow } />
-          <table>
-            <thead>
-              <tr>
-                <th>Description</th>
-                <th>Units</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              {invoiceRows}
-            </tbody>
-          </table>
-        </div>
+      <div className="rows">
+        <input type="button" value="New row" onClick={ this.newRow } />
+        <RowsSection rows={this.state.rows} />
+      </div>
 
-        <button type="submit">Submit</button>
+      <button type="submit" onClick={ this.handleSubmit }>Submit</button>
       </form>
     );
   }
