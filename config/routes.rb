@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'invoices#index'
 
   resources :invoices
+
+  get '/invoices/:id/pdf', to: 'invoices#pdf', as: 'pdf_invoice'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

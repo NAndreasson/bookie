@@ -30,6 +30,9 @@ gem 'neat'
 
 gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 
+# for PDF-file generation
+gem 'prawn'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

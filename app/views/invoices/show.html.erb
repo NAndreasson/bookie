@@ -13,4 +13,4 @@
   Last pay date: <%= @invoice.last_pay_date %>
 </p>
 
-<%= link_to 'Save as pdf', invoices_path %>
+<%= link_to 'Save as pdf', pdf_invoice_path(@invoice) %>

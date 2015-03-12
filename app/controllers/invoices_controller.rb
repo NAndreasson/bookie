@@ -1,5 +1,5 @@
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :set_invoice, only: [:show, :edit, :update, :destroy, :pdf]
 
   # GET /invoices
   # GET /invoices.json
@@ -61,6 +61,13 @@ class InvoicesController < ApplicationController
     end
   end
 
+  # PDF /invoices/1/pdf
+  def pdf
+    send_data generate_pdf(@invoice),
+      filename: "#{@invoice.customer}.pdf",
+      type: "application/pdf"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice
@@ -70,5 +77,12 @@ class InvoicesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
       params.require(:invoice).permit(:customer, :invoice_date, :last_pay_date)
+    end
+
+    def generate_pdf(invoice)
+      Prawn::Document.new do
+        text invoice.customer, align: :center
+        text "Address: #{invoice.invoice_date}"
+      end.render
     end
 end
