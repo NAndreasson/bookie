@@ -1,17 +1,34 @@
 var InvoiceForm = React.createClass({
 
   getInitialState: function() {
+    var rows = {};
+
+    var id = this.genId();
+    rows[id] = {
+      id: id,
+      desc: '', price: 0, units: 0
+    }
+
     return {
-      rows: [
-      { desc: '', price: 0, units: 0 }
-      ]
+      rows: rows
     };
   },
 
+  genId: function() {
+    // Stolen / borrowed (choose one) from Facebook TodoMVC example
+    var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+
+    return id;
+  },
+
   newRow: function() {
-    console.log('New Row');
     var rows = this.state.rows;
-    rows.push({ desc: '', price: 0, units: 0 });
+
+    var id = this.genId();
+    rows[id] = {
+      id: id,
+      desc: '', price: 0, units: 0
+    };
 
     this.setState({ rows: rows });
   },
@@ -31,14 +48,21 @@ var InvoiceForm = React.createClass({
 
   },
 
+  handleDelete: function(id) {
+    var rows = this.state.rows;
+    delete rows[id];
+
+    this.setState({ rows: rows });
+  },
+
   render: function() {
 
     return (
-      <form onSubmit={ this.handleSubmit }>
+      <form>
 
         <div className="test">
 
-          <div className="customer">
+          <div className="customer-name">
             <label>Customer</label>
             <input type="text" placeholder="Customer" ref="customer" />
           </div>
@@ -51,7 +75,7 @@ var InvoiceForm = React.createClass({
 
       <div className="rows">
         <input type="button" value="New row" onClick={ this.newRow } />
-        <RowsSection rows={this.state.rows} />
+        <RowsSection rows={this.state.rows} onDelete={ this.handleDelete } />
       </div>
 
       <button type="submit" onClick={ this.handleSubmit }>Submit</button>

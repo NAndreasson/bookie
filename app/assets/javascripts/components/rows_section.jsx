@@ -1,10 +1,12 @@
 var RowsSection = React.createClass({
 
   render: function() {
+    var invoiceRows = [];
+    var rows = this.props.rows;
 
-    var invoiceRows = this.props.rows.map(function(invoiceRow, index) {
-      return <NewInvoiceRow key={index} row={invoiceRow} />;
-    });
+    for (var key in rows) {
+      invoiceRows.push(<NewInvoiceRow key={key} row={rows[key]} onDelete={ this.props.onDelete } />);
+    }
 
     return (
         <table>
@@ -13,6 +15,7 @@ var RowsSection = React.createClass({
               <th>Description</th>
               <th>Units</th>
               <th>Price</th>
+              <th className="delete"></th>
             </tr>
           </thead>
           <tbody>

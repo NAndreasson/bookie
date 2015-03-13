@@ -7,7 +7,23 @@
     @include fill-parent();
   }
 
-  .customer, .meck {
+  .rows {
+    @include fill-parent();
+  }
+
+  .rows table input {
+    margin-bottom: 0;
+  }
+
+  th.delete {
+    width: 50px;
+  }
+
+  button.delete {
+    background: red;
+  }
+
+  .customer-name, .meck {
     @include span-columns(4 of 8);
   }
 
