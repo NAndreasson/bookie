@@ -5,7 +5,14 @@ var RowsSection = React.createClass({
     var rows = this.props.rows;
 
     for (var key in rows) {
-      invoiceRows.push(<NewInvoiceRow key={key} row={rows[key]} onDelete={ this.props.onDelete } />);
+      invoiceRows.push(
+        <NewInvoiceRow
+          key={key}
+          row={rows[key]}
+          onDelete={ this.props.onDelete }
+          onUpdate={ this.props.onUpdate }
+        />
+        );
     }
 
     return (

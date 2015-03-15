@@ -55,6 +55,13 @@ var InvoiceForm = React.createClass({
     this.setState({ rows: rows });
   },
 
+  handleUpdate: function(data) {
+    var rows = this.state.rows;
+    rows[data.id] = data;
+
+    this.setState({ rows: rows });
+  },
+
   render: function() {
 
     return (
@@ -75,7 +82,7 @@ var InvoiceForm = React.createClass({
 
       <div className="rows">
         <input type="button" value="New row" onClick={ this.newRow } />
-        <RowsSection rows={this.state.rows} onDelete={ this.handleDelete } />
+        <RowsSection rows={this.state.rows} onDelete={ this.handleDelete } onUpdate={ this.handleUpdate }/>
       </div>
 
       <button type="submit" onClick={ this.handleSubmit }>Submit</button>
