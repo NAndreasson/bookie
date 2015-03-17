@@ -26,8 +26,19 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Invoice.new(invoice_params.merge(invoice_date: Date.current))
 
+    rowsParam = params[:invoice][:invoice_rows]
+    rows = rowsParam.map do |row|
+      data = row[1]
+      { desc: data[:desc], units: data[:units], price: data[:price] }
+    end
+
     respond_to do |format|
       if @invoice.save
+
+        rows.each do |row|
+          @invoice.invoice_row.create(row)
+        end
+
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
         format.json { render :show, status: :created, location: @invoice }
       else

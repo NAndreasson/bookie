@@ -13,4 +13,13 @@
   Last pay date: <%= @invoice.last_pay_date %>
 </p>
 
+<ul>
+<% @invoice.invoice_row.each do |row| %>
+<li>
+  <%= row.desc %> - <%= row.units %> - <%= row.price %>
+</li>
+<% end %>
+</ul>
+
+
 <%= link_to 'Save as pdf', pdf_invoice_path(@invoice) %>
