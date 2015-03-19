@@ -13,13 +13,37 @@
   Last pay date: <%= @invoice.last_pay_date %>
 </p>
 
-<ul>
-<% @invoice.invoice_row.each do |row| %>
-<li>
-  <%= row.desc %> - <%= row.units %> - <%= row.price %>
-</li>
+<table id="invoice-details">
+  <thead>
+    <tr>
+      <th>Desc</th>
+      <th>Units</th>
+      <th>À-pris</th>
+      <th>Pris exkl. moms</th>
+      <th>Momssats</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @invoice.invoice_row.each do |row| %>
+  <tr>
+    <td>
+      <%= row.desc %>
+    </td>
+    <td>
+      <%= row.units %>
+    </td>
+    <td>
+      <%= row.price %>
+    </td>
+    <td>
+      <%= total_price(row.price, row.units) %>
+    </td>
+    <td>
+      25%
+    </td>
+  </tr>
 <% end %>
-</ul>
-
+</tbody>
+</table>
 
 <%= link_to 'Save as pdf', pdf_invoice_path(@invoice) %>
