@@ -46,4 +46,21 @@
 </tbody>
 </table>
 
+<table id="summary">
+  <tbody>
+    <tr>
+      <th>Pris exkl. moms</th>
+      <td><%= sum_rows_total(@invoice.invoice_row) %></td>
+    </tr>
+    <tr>
+      <th>Moms (25%)</th>
+      <td><%= calc_tax(@invoice.invoice_row) %></td>
+    </tr>
+    <tr class="total">
+      <th>Summa att betala</th>
+      <td><%= sum_total(@invoice.invoice_row) %></td>
+    </tr>
+  </tbody>
+ </table>
+
 <%= link_to 'Save as pdf', pdf_invoice_path(@invoice) %>
