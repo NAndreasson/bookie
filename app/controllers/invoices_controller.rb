@@ -92,8 +92,13 @@ class InvoicesController < ApplicationController
 
     def generate_pdf(invoice)
       Prawn::Document.new do
-        text invoice.customer, align: :center
-        text "Address: #{invoice.invoice_date}"
+        text "FAKTURA", :size => 18
+
+        text "Kund: #{invoice.customer}"
+        text "Fakturadatum: #{invoice.invoice_date} Förfallodatum: #{invoice.last_pay_date}"
+        text "Dröjsmålsränta: Enligt lag"
+
+
       end.render
     end
 end
