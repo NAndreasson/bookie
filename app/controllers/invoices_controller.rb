@@ -98,6 +98,12 @@ class InvoicesController < ApplicationController
         text "Fakturadatum: #{invoice.invoice_date} Förfallodatum: #{invoice.last_pay_date}"
         text "Dröjsmålsränta: Enligt lag"
 
+        invoice.invoice_row.each do |row|
+          text "Beskrivning: #{row.desc}"
+          text "Timmar: #{row.units}"
+          text "Pris: #{row.price}"
+        end
+
 
       end.render
     end
