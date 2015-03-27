@@ -100,6 +100,11 @@ class InvoicesController < ApplicationController
 
         move_down 10
 
+        text "Faktura-detaljer", :style => :bold_italic
+        stroke_horizontal_rule
+
+        move_down 10
+
         invoice.invoice_row.each do |row|
           text "Beskrivning: #{row.desc}"
           text "Timmar: #{row.units}"
