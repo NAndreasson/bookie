@@ -100,7 +100,7 @@ class InvoicesController < ApplicationController
 
         move_down 10
 
-        text "Faktura-detaljer", :style => :bold_italic
+        text "Text Timmar Á-pris Pris exkl. moms Momssats", :style => :bold_italic
         stroke_horizontal_rule
 
         move_down 10
