@@ -32,6 +32,7 @@ gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 
 # for PDF-file generation
 gem 'prawn'
+gem 'prawn-table'
 
 gem 'rails-i18n', '~> 4.0.0'
 
