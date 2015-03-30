@@ -1,3 +1,5 @@
+require "prawn/table"
+
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy, :pdf]
 
@@ -100,16 +102,21 @@ class InvoicesController < ApplicationController
 
         move_down 10
 
-        text "Text Timmar Á-pris Pris exkl. moms Momssats", :style => :bold_italic
+        text "Detaljer", :style => :bold_italic
         stroke_horizontal_rule
 
         move_down 10
 
-        invoice.invoice_row.each do |row|
-          text "Beskrivning: #{row.desc}"
-          text "Timmar: #{row.units}"
-          text "Pris: #{row.price}"
+        items = [["Text", "Timmar", "Á-pris", "Pris exkl. moms", "Momssats"]]
+
+        items += invoice.invoice_row.map do |row|
+          [ row.desc, row.units, row.price, (row.price * row.units).to_s + " kr", "25%"]
         end
+
+        table(items, :header => true, :column_widths => { 0 => 50, 1 => 250, 3 => 100}) do
+          style(columns(3)) {|x| x.align = :right }
+        end
+
 
 
       end.render
