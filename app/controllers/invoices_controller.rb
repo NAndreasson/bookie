@@ -110,13 +110,26 @@ class InvoicesController < ApplicationController
         items = [["Text", "Timmar", "Á-pris", "Pris exkl. moms", "Momssats"]]
 
         items += invoice.invoice_row.map do |row|
-          [ row.desc, row.units, row.price, (row.price * row.units).to_s + " kr", "25%"]
+          [ row.desc, row.units, row.price.to_s + " kr", (row.price * row.units).to_s + " kr", "25%"]
         end
 
         table(items, :header => true, :column_widths => { 0 => 50, 1 => 250, 3 => 100}) do
           style(columns(3)) {|x| x.align = :right }
         end
 
+        move_down 15
+
+        total_wo_tax = 0
+
+        invoice.invoice_row.each do |row|
+          total_wo_tax += (row.price * row.units)
+        end
+
+        text "Pris exkl. moms " + total_wo_tax.to_s + " kr"
+        text "Moms (25%) " + (total_wo_tax * 0.25).to_s + " kr"
+
+        total_w_tax = total_wo_tax * 1.25
+        text "Summa att betala #{total_w_tax} kr", :style => :bold
 
 
       end.render
