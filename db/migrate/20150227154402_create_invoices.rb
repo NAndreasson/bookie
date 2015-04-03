@@ -1,7 +1,7 @@
 class CreateInvoices < ActiveRecord::Migration
   def change
     create_table :invoices do |t|
-      t.string :customer, null: false
+      t.belongs_to :customer, index: true
 
       # many rows
 
