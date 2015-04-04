@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'invoices#index'
 
   resources :invoices
+  resources :customers
 
   get '/invoices/:id/pdf', to: 'invoices#pdf', as: 'pdf_invoice'
   # The priority is based upon order of creation: first created -> highest priority.

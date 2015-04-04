@@ -37,11 +37,13 @@ ActiveRecord::Schema.define(version: 20150401190503) do
   add_index "invoice_rows", ["invoice_id"], name: "index_invoice_rows_on_invoice_id", using: :btree
 
   create_table "invoices", force: :cascade do |t|
-    t.string   "customer",      null: false
+    t.integer  "customer_id"
     t.date     "invoice_date",  null: false
     t.date     "last_pay_date", null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
 
 end
