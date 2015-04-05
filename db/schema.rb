@@ -17,13 +17,15 @@ ActiveRecord::Schema.define(version: 20150401190503) do
   enable_extension "plpgsql"
 
   create_table "customers", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.string   "street"
     t.string   "postnr"
     t.string   "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "customers", ["name"], name: "index_customers_on_name", unique: true, using: :btree
 
   create_table "invoice_rows", force: :cascade do |t|
     t.integer  "invoice_id"

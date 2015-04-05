@@ -1,19 +1,22 @@
 <div class="customer">
   <h1>New Customer</h1>
 
-  <label for="">Name</label>
-  <input type="text" placeholder="Name">
+  <%= form_for @customer, url: {action: "create"} do |f| %>
 
-  <label for="">Street</label>
-  <input type="text" placeholder="Street">
+    <%= label_tag(:name, "Name") %>
+    <%= f.text_field :name, placeholder: "ACME LTD" %>
 
-  <label for="">Postnr</label>
-  <input type="text" placeholder="Postnr">
+    <%= label_tag(:street, "Street") %>
+    <%= f.text_field :street, placeholder: "Hagforsgatan 32" %>
 
-  <label for="">City</label>
-  <input type="text" placeholder="City">
+    <%= label_tag(:postnr, "Postnr") %>
+    <%= f.text_field :postnr, placeholder: "416 76" %>
 
-  <input type="button" value="Create">
+    <%= label_tag(:city, "City") %>
+    <%= f.text_field :city, placeholder: "Gothenburg" %>
 
+    <%= submit_tag("Create") %>
+
+  <% end %>
 
 </div>
