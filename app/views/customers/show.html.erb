@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>
+
+<p>
+  Name: <%= @customer.name %>
+</p>
+<p>
+  Street: <%= @customer.street %>
+</p>
+<p>
+  Postnr: <%= @customer.postnr %>
+</p>
+<p>
+  City: <%= @customer.city %>
+</p>
