@@ -7,7 +7,7 @@ var InvoiceForm = React.createClass({
     rows[id] = {
       id: id,
       desc: '', price: 0, units: 0
-    }
+    };
 
     return {
       rows: rows
@@ -64,6 +64,10 @@ var InvoiceForm = React.createClass({
 
   render: function() {
 
+    var customers = this.props.customers.map(function(customer) {
+      return <option>{customer.name}</option>
+    });
+
     return (
       <form>
 
@@ -71,7 +75,10 @@ var InvoiceForm = React.createClass({
 
           <div className="customer-name">
             <label>Customer</label>
-            <input type="text" placeholder="Customer" ref="customer" />
+            <select ref="customer">
+              {customers}
+           </select>
+
           </div>
           <div className="meck">
             <label>Last pay date</label>
