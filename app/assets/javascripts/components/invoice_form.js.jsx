@@ -65,7 +65,7 @@ var InvoiceForm = React.createClass({
   render: function() {
 
     var customers = this.props.customers.map(function(customer) {
-      return <option>{customer.name}</option>
+      return <option value={customer.id}>{customer.name}</option>
     });
 
     return (
