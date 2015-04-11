@@ -16,7 +16,7 @@
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-        <td><%= invoice.customer %> - <%= invoice.invoice_date %></td>
+        <td><%= invoice.customer.name %> - <%= invoice.invoice_date %></td>
         <td><%= link_to 'Show', invoice %></td>
         <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
         <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>

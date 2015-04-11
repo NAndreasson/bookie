@@ -36,8 +36,10 @@ var InvoiceForm = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
 
+    console.log(this.refs.customer.getDOMNode().value.trim());
+
     var invoice = {
-      customer: this.refs.customer.getDOMNode().value.trim(),
+      customer_id: this.refs.customer.getDOMNode().value.trim(),
       last_pay_date: this.refs.last_pay_date.getDOMNode().value.trim(),
       invoice_rows: this.state.rows
     };
