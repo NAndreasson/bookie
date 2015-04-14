@@ -5,6 +5,8 @@ Mainly goals: Get more comfortable with Rails and learn React.
 
 ##Technologies
 
-Database: Postgres
+**Backend**: Rails
 
-Rails & React
+**UI**: React
+
+**Database**: Postgres
