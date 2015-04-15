@@ -1,6 +1,8 @@
-<h1>Editing Invoice</h1>
+<div class="invoice">
+  <h1>Editing Invoice</h1>
 
-<%= render 'form' %>
+  <%= react_component('EditInvoiceForm', { invoice: @invoice, customers: @customers }) %>
+</div>
 
 <%= link_to 'Show', @invoice %> |
 <%= link_to 'Back', invoices_path %>
