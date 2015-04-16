@@ -1,7 +1,11 @@
 var EditInvoiceForm = React.createClass({
 
   getInitialState: function() {
-    return {};
+    var invoice = this.props.invoice;
+
+    return {
+      rows: invoice.invoice_row
+    };
   },
 
   render: function() {
