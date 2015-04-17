@@ -8,6 +8,43 @@ var EditInvoiceForm = React.createClass({
     };
   },
 
+  handleSubmit: function(e) {
+    e.preventDefault();
+
+    var invoice = this.props.invoice;
+    var invoiceId = invoice.id;
+
+    var updatedInvoice = {
+      customer_id: this.refs.customer.getDOMNode().value.trim(),
+      last_pay_date: this.refs.last_pay_date.getDOMNode().value.trim(),
+      invoice_rows: this.state.rows
+    };
+
+    $.ajax('/invoices/' + invoiceId + '.json', {
+      type: 'PUT',
+      data: {
+        invoice: updatedInvoice
+      }
+    }, function() {
+      console.log('Response', arguments);
+    });
+
+  },
+
+  handleDelete: function(id) {
+    var rows = this.state.rows;
+    delete rows[id];
+
+    this.setState({ rows: rows });
+  },
+
+  handleUpdate: function(data) {
+    var rows = this.state.rows;
+    rows[data.id] = data;
+
+    this.setState({ rows: rows });
+  },
+
   render: function() {
     var invoice = this.props.invoice;
     var customerId = invoice.customer_id;
