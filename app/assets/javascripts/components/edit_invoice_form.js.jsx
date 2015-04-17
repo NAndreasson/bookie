@@ -40,7 +40,7 @@ var EditInvoiceForm = React.createClass({
         <RowsSection rows={this.state.rows} onDelete={ this.handleDelete } onUpdate={ this.handleUpdate }/>
       </div>
 
-      <button type="submit" onClick={ this.handleSubmit }>Submit</button>
+      <button type="submit" onClick={ this.handleSubmit }>Save Edits</button>
       </form>
     );
   }
