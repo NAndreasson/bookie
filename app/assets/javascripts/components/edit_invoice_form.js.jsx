@@ -8,6 +8,13 @@ var EditInvoiceForm = React.createClass({
     };
   },
 
+  genId: function() {
+    // Stolen / borrowed (choose one) from Facebook TodoMVC example
+    var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+
+    return id;
+  },
+
   handleSubmit: function(e) {
     e.preventDefault();
 
@@ -29,6 +36,18 @@ var EditInvoiceForm = React.createClass({
       console.log('Response', arguments);
     });
 
+  },
+
+  newRow: function() {
+    var rows = this.state.rows;
+
+    var id = this.genId();
+    rows[id] = {
+      id: id,
+      desc: '', price: 0, units: 0
+    };
+
+    this.setState({ rows: rows });
   },
 
   handleDelete: function(id) {
