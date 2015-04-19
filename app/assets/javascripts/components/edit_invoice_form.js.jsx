@@ -11,7 +11,6 @@ var EditInvoiceForm = React.createClass({
   genId: function() {
     // Stolen / borrowed (choose one) from Facebook TodoMVC example
     var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
-
     return id;
   },
 

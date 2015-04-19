@@ -55,6 +55,22 @@ class InvoicesController < ApplicationController
   # PATCH/PUT /invoices/1
   # PATCH/PUT /invoices/1.json
   def update
+    # find the invoice
+    rowsParam = params[:invoice][:invoice_rows]
+    rows = rowsParam.map do |row|
+      data = row[1]
+      { desc: data[:desc], units: data[:units], price: data[:price] }
+    end
+
+    @invoice.invoice_row.each do |row|
+      row.destroy
+    end
+
+    rows.each do |row|
+      @invoice.invoice_row.create(row)
+    end
+
+    # update info
     respond_to do |format|
       if @invoice.update(invoice_params)
         format.html { redirect_to @invoice, notice: 'Invoice was successfully updated.' }
