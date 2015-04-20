@@ -30,9 +30,12 @@ var EditInvoiceForm = React.createClass({
       type: 'PUT',
       data: {
         invoice: updatedInvoice
+      },
+      success: function(data, status, xhr) {
+        // redirect to resource after success
+        var location = xhr.getResponseHeader('Location');
+        window.location.replace( location );
       }
-    }, function() {
-      console.log('Response', arguments);
     });
 
   },
