@@ -54,7 +54,13 @@ var EditInvoiceForm = React.createClass({
 
   handleDelete: function(id) {
     var rows = this.state.rows;
-    delete rows[id];
+
+    rows.forEach(function(row, index) {
+      if (row.id === id) {
+        delete rows[index];
+        return;
+      }
+    });
 
     this.setState({ rows: rows });
   },
