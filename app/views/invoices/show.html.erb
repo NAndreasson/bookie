@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Back', invoices_path %> |
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+<%= link_to 'Save as pdf', pdf_invoice_path(@invoice) %>
+
 
 <p>
   Customer: <%= @invoice.customer.name %>
@@ -63,4 +65,3 @@
   </tbody>
  </table>
 
-<%= link_to 'Save as pdf', pdf_invoice_path(@invoice) %>
