@@ -95,7 +95,7 @@ class InvoicesController < ApplicationController
   # PDF /invoices/1/pdf
   def pdf
     send_data generate_pdf(@invoice),
-      filename: "#{@invoice.customer}.pdf",
+      filename: "#{@invoice.customer.name} #{@invoice.invoice_date}.pdf",
       type: "application/pdf"
   end
 
@@ -114,7 +114,7 @@ class InvoicesController < ApplicationController
       Prawn::Document.new do
         text "FAKTURA", :size => 18
 
-        text "Kund: #{invoice.customer}"
+        text "Kund: #{invoice.customer.name}"
         text "Fakturadatum: #{invoice.invoice_date} Förfallodatum: #{invoice.last_pay_date}"
         text "Dröjsmålsränta: Enligt lag"
 
