@@ -44,8 +44,9 @@ var InvoiceForm = React.createClass({
       invoice_rows: this.state.rows
     };
 
-    $.post('/invoices.json', { invoice: invoice }, function() {
-      console.log('Response', arguments);
+    $.post('/invoices.json', { invoice: invoice }, function(data, sucess, xhr) {
+      // go to resource view page
+      window.location.href = xhr.getResponseHeader('Location');
     });
 
   },
