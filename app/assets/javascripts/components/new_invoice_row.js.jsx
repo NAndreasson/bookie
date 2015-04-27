@@ -18,22 +18,26 @@ var NewInvoiceRow = React.createClass({
   _changeDesc: function(ev) {
     this.setState({
       desc: ev.target.value
+    }, function() {
+      this.emitUpdate();
     });
-    this.emitUpdate();
   },
 
   _changePrice: function(ev) {
+    console.log('Ev target val', ev.target.value);
     this.setState({
       price: ev.target.value
+    }, function() {
+      this.emitUpdate();
     });
-    this.emitUpdate();
   },
 
   _changeUnits: function(ev) {
     this.setState({
       units: ev.target.value
+    }, function() {
+      this.emitUpdate();
     });
-    this.emitUpdate();
   },
 
   emitUpdate: function() {

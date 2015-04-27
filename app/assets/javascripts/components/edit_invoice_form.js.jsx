@@ -66,8 +66,15 @@ var EditInvoiceForm = React.createClass({
   },
 
   handleUpdate: function(data) {
+    console.log('Data', data);
     var rows = this.state.rows;
-    rows[data.id] = data;
+
+    rows.forEach(function(row, index) {
+      if (row.id === data.id) {
+        rows[index] = data;
+        return;
+      }
+    });
 
     this.setState({ rows: rows });
   },
