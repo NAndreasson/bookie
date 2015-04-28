@@ -44,10 +44,11 @@ var EditInvoiceForm = React.createClass({
     var rows = this.state.rows;
 
     var id = this.genId();
-    rows[id] = {
+
+    rows.push({
       id: id,
       desc: '', price: 0, units: 0
-    };
+    });
 
     this.setState({ rows: rows });
   },
@@ -66,7 +67,6 @@ var EditInvoiceForm = React.createClass({
   },
 
   handleUpdate: function(data) {
-    console.log('Data', data);
     var rows = this.state.rows;
 
     rows.forEach(function(row, index) {

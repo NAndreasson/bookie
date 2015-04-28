@@ -24,7 +24,6 @@ var NewInvoiceRow = React.createClass({
   },
 
   _changePrice: function(ev) {
-    console.log('Ev target val', ev.target.value);
     this.setState({
       price: ev.target.value
     }, function() {
